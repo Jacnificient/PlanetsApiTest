@@ -22,42 +22,42 @@ describe('Planets Get Api Tests', ()=>
 
     })  
 
-    // it('Verify Response Data', ()=>
-    // {
-    //     cy.request('https://swapi.dev/api/planets/3/').as('planets')//This calls the API and stores response in object called Planets
-   
-    //     //verifies status code after call 
-    //     cy.statusVerify //customised command
-
-    //     //Block of code below validates all header response
-    //     cy.get('@planets').its('body').should('include',{name: 'Yavin IV'})
-    //     cy.get('@planets').its('body').should('include',{rotation_period: '24'})
-    //     cy.get('@planets').its('body').should('include',{orbital_period: '4818'})
-    //     cy.get('@planets').its('body').should('include',{diameter: '10200'})
-    //     cy.get('@planets').its('body').should('include',{climate: 'temperate, tropical'})
-    //     cy.get('@planets').its('body').should('include',{gravity: '1 standard'})
-    //     cy.get('@planets').its('body').should('include',{terrain: 'jungle, rainforests'})
-    //     cy.get('@planets').its('body').should('include',{surface_water: '8'})
-    //     cy.get('@planets').its('body').should('include',{population: '1000'})
-    //     cy.get('@planets').its('body').its('residents').should('be.a','array')
-    //     cy.get('@planets').its('body').its('films').should('be.a','array').and('contain','https://swapi.dev/api/films/1/')
-    //     cy.get('@planets').its('body').should('include',{created: '2014-12-10T11:37:19.144000Z'})
-    //     cy.get('@planets').its('body').should('include',{edited: '2014-12-20T20:58:18.421000Z'})
-    //     cy.get('@planets').its('body').should('include',{url: 'https://swapi.dev/api/planets/3/'})
-
-    // })  
-
-    // it('Verify Response Time', ()=>
-    // {
-    //     cy.request('https://swapi.dev/api/planets/3/').then((response)=>{
-    //         // this assertion expects response time to be less than 3ms
-    //            expect(response.duration).to.not.be.greaterThan(3)   
-    //         })
-    // })  
-
-    it('Mock Data Test', ()=>
+    it('Verify Response Data', ()=>
     {
-        cy.visit('https://swapi.dev/api/planets/3/')
+        cy.request('https://swapi.dev/api/planets/3/').as('planets')//This calls the API and stores response in object called Planets
+   
+        //verifies status code after call 
+        cy.statusVerify //customised command
+
+        //Block of code below validates all header response
+        cy.get('@planets').its('body').should('include',{name: 'Yavin IV'})
+        cy.get('@planets').its('body').should('include',{rotation_period: '24'})
+        cy.get('@planets').its('body').should('include',{orbital_period: '4818'})
+        cy.get('@planets').its('body').should('include',{diameter: '10200'})
+        cy.get('@planets').its('body').should('include',{climate: 'temperate, tropical'})
+        cy.get('@planets').its('body').should('include',{gravity: '1 standard'})
+        cy.get('@planets').its('body').should('include',{terrain: 'jungle, rainforests'})
+        cy.get('@planets').its('body').should('include',{surface_water: '8'})
+        cy.get('@planets').its('body').should('include',{population: '1000'})
+        cy.get('@planets').its('body').its('residents').should('be.a','array')
+        cy.get('@planets').its('body').its('films').should('be.a','array').and('contain','https://swapi.dev/api/films/1/')
+        cy.get('@planets').its('body').should('include',{created: '2014-12-10T11:37:19.144000Z'})
+        cy.get('@planets').its('body').should('include',{edited: '2014-12-20T20:58:18.421000Z'})
+        cy.get('@planets').its('body').should('include',{url: 'https://swapi.dev/api/planets/3/'})
+
+    })  
+
+    it('Verify Response Time', ()=>
+    {
+        cy.request('https://swapi.dev/api/planets/3/').then((response)=>{
+            // this assertion expects response time to be less than 3ms
+               expect(response.duration).to.not.be.greaterThan(3)   
+            })
+    })  
+
+    it('Mock Data Test', function()
+    {
+        cy.visit('https://swapi.dev/api/planets/3/');
         cy.intercept({
             method: 'GET',
             url: 'https://swapi.dev/api/planets/3/'
@@ -69,7 +69,7 @@ describe('Planets Get Api Tests', ()=>
             "orbital_period": "4818",
             "diameter": "10200"
         }]
-        }).as('planets')
+        }).as('planets');
         //cy.wait('@planets')
         cy.get('@planets').its('body').should('include',{name: 'Yavin IV'})
     })  

@@ -1,0 +1,191 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 3,
+    "pending": 0,
+    "failures": 2,
+    "start": "2022-02-28T07:19:39.012Z",
+    "end": "2022-02-28T07:20:12.875Z",
+    "duration": 33863,
+    "testsRegistered": 5,
+    "passPercent": 60,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "f345eb72-3698-455c-ad46-8a80c8b19b32",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4c996db5-0501-46be-afb6-2124b81f051c",
+          "title": "Planets Get Api Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify Response Headers",
+              "fullTitle": "Planets Get Api Tests Verify Response Headers",
+              "timedOut": null,
+              "duration": 1633,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('https://swapi.dev/api/planets/3/').as('planets'); //This calls the API and stores response in object called Planets\n//verifies status code after call \ncy.statusVerify(); //customised command\n//Block of code below validates all header response\ncy.get('@planets').its('headers').its('server').should('include', 'nginx/1.16.1');\ncy.get('@planets').its('headers').its('content-type').should('include', 'application/json');\ncy.get('@planets').its('headers').its('transfer-encoding').should('include', 'chunked');\ncy.get('@planets').its('headers').its('connection').should('include', 'keep-alive');\ncy.get('@planets').its('headers').its('vary').should('include', 'Accept, Cookie');\ncy.get('@planets').its('headers').its('x-frame-options').should('include', 'SAMEORIGIN');\ncy.get('@planets').its('headers').its('etag').should('include', '\"ccbca9ad5dbcc6c73413df0765660c26\"');\ncy.get('@planets').its('headers').its('allow').should('include', 'GET, HEAD, OPTIONS');\ncy.get('@planets').its('headers').its('strict-transport-security').should('include', 'max-age=15768000');",
+              "err": {},
+              "uuid": "44d88c40-0582-4bfd-9d11-f68a64b374d8",
+              "parentUUID": "4c996db5-0501-46be-afb6-2124b81f051c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify Response Data",
+              "fullTitle": "Planets Get Api Tests Verify Response Data",
+              "timedOut": null,
+              "duration": 419,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('https://swapi.dev/api/planets/3/').as('planets'); //This calls the API and stores response in object called Planets\n//verifies status code after call \ncy.statusVerify; //customised command\n//Block of code below validates all header response\ncy.get('@planets').its('body').should('include', {\n  name: 'Yavin IV'\n});\ncy.get('@planets').its('body').should('include', {\n  rotation_period: '24'\n});\ncy.get('@planets').its('body').should('include', {\n  orbital_period: '4818'\n});\ncy.get('@planets').its('body').should('include', {\n  diameter: '10200'\n});\ncy.get('@planets').its('body').should('include', {\n  climate: 'temperate, tropical'\n});\ncy.get('@planets').its('body').should('include', {\n  gravity: '1 standard'\n});\ncy.get('@planets').its('body').should('include', {\n  terrain: 'jungle, rainforests'\n});\ncy.get('@planets').its('body').should('include', {\n  surface_water: '8'\n});\ncy.get('@planets').its('body').should('include', {\n  population: '1000'\n});\ncy.get('@planets').its('body').its('residents').should('be.a', 'array');\ncy.get('@planets').its('body').its('films').should('be.a', 'array').and('contain', 'https://swapi.dev/api/films/1/');\ncy.get('@planets').its('body').should('include', {\n  created: '2014-12-10T11:37:19.144000Z'\n});\ncy.get('@planets').its('body').should('include', {\n  edited: '2014-12-20T20:58:18.421000Z'\n});\ncy.get('@planets').its('body').should('include', {\n  url: 'https://swapi.dev/api/planets/3/'\n});",
+              "err": {},
+              "uuid": "65b579b5-0099-43ba-b33f-396cf299176a",
+              "parentUUID": "4c996db5-0501-46be-afb6-2124b81f051c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify Response Time",
+              "fullTitle": "Planets Get Api Tests Verify Response Time",
+              "timedOut": null,
+              "duration": 611,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('https://swapi.dev/api/planets/3/').then(response => {\n  // this assertion expects response time to be less than 3ms\n  expect(response.duration).to.not.be.greaterThan(3);\n});",
+              "err": {
+                "message": "AssertionError: expected 177 to be at most 3",
+                "estack": "AssertionError: expected 177 to be at most 3\n    at Context.eval (http://localhost:58387/__cypress/tests?p=cypress\\integration\\apiTests\\getApi.js:167:43)",
+                "diff": "- 177\n+ 3\n"
+              },
+              "uuid": "86bc3d92-688b-4886-944e-ae4936a39d33",
+              "parentUUID": "4c996db5-0501-46be-afb6-2124b81f051c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Mock Data Test",
+              "fullTitle": "Planets Get Api Tests Mock Data Test",
+              "timedOut": null,
+              "duration": 17037,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://swapi.dev/api/planets/3/');\ncy.intercept({\n  method: 'GET',\n  url: 'https://swapi.dev/api/planets/3/'\n}, {\n  body: [{\n    \"name\": \"Imtiyaz\",\n    \"rotation_period\": \"24\",\n    \"orbital_period\": \"4818\",\n    \"diameter\": \"10200\"\n  }]\n}).as('planets'); //cy.wait('@planets')\ncy.get('@planets').its('body').should('include', {\n  name: 'Yavin IV'\n});",
+              "err": {
+                "message": "CypressError: Timed out retrying after 4000ms: `cy.its()` errored because your subject is: `null`. You cannot access any properties such as `body` on a `null` value.\n\nIf you expect your subject to be `null`, then add an assertion such as:\n\n`cy.wrap(null).should('be.null')`\n\nhttps://on.cypress.io/its",
+                "estack": "CypressError: Timed out retrying after 4000ms: `cy.its()` errored because your subject is: `null`. You cannot access any properties such as `body` on a `null` value.\n\nIf you expect your subject to be `null`, then add an assertion such as:\n\n`cy.wrap(null).should('be.null')`\n\nhttps://on.cypress.io/its\n    at cypressErr (https://swapi.dev/__cypress/runner/cypress_runner.js:176254:18)\n    at Object.cypressErrByPath (https://swapi.dev/__cypress/runner/cypress_runner.js:176260:10)\n    at subjectNullOrUndefinedErr (https://swapi.dev/__cypress/runner/cypress_runner.js:156391:83)\n    at traverseObjectAtPath (https://swapi.dev/__cypress/runner/cypress_runner.js:156423:26)\n    at getValue (https://swapi.dev/__cypress/runner/cypress_runner.js:156511:11)\n    at tryCatcher (https://swapi.dev/__cypress/runner/cypress_runner.js:13022:23)\n    at Function.Promise.attempt.Promise.try (https://swapi.dev/__cypress/runner/cypress_runner.js:10296:29)\n    at retryValue (https://swapi.dev/__cypress/runner/cypress_runner.js:156551:65)\n    at tryCatcher (https://swapi.dev/__cypress/runner/cypress_runner.js:13022:23)\n    at Function.Promise.attempt.Promise.try (https://swapi.dev/__cypress/runner/cypress_runner.js:10296:29)\n    at resolveValue (https://swapi.dev/__cypress/runner/cypress_runner.js:156558:65)\n    at tryCatcher (https://swapi.dev/__cypress/runner/cypress_runner.js:13022:23)\n    at Function.Promise.attempt.Promise.try (https://swapi.dev/__cypress/runner/cypress_runner.js:10296:29)\n    at whenStable (https://swapi.dev/__cypress/runner/cypress_runner.js:168719:63)\n    at https://swapi.dev/__cypress/runner/cypress_runner.js:168216:14\n    at tryCatcher (https://swapi.dev/__cypress/runner/cypress_runner.js:13022:23)\nFrom Your Spec Code:\n    at Context.eval (https://swapi.dev/__cypress/tests?p=cypress\\integration\\apiTests\\getApi.js:184:36)",
+                "diff": null
+              },
+              "uuid": "165ad113-7558-450b-97c2-dd5f6ab86b6c",
+              "parentUUID": "4c996db5-0501-46be-afb6-2124b81f051c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Negative Test",
+              "fullTitle": "Planets Get Api Tests Negative Test",
+              "timedOut": null,
+              "duration": 9809,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  failOnStatusCode: false,\n  url: 'https://swapi.dev/api/planets/3/',\n  body: {\n    \"name\": \"Automated testing\",\n    \"Completed\": true\n  }\n}).as('planets'); //verifies status code is = 405\ncy.poststatusVerify(); //customised command\ncy.get('@planets').its('body').should('include', {\n  detail: \"Method 'POST' not allowed.\"\n});",
+              "err": {},
+              "uuid": "b9cd047f-e5ec-45bd-b200-262b475e49b4",
+              "parentUUID": "4c996db5-0501-46be-afb6-2124b81f051c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "44d88c40-0582-4bfd-9d11-f68a64b374d8",
+            "65b579b5-0099-43ba-b33f-396cf299176a",
+            "b9cd047f-e5ec-45bd-b200-262b475e49b4"
+          ],
+          "failures": [
+            "86bc3d92-688b-4886-944e-ae4936a39d33",
+            "165ad113-7558-450b-97c2-dd5f6ab86b6c"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 29509,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.0"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": true,
+        "html": true,
+        "json": true,
+        "charts": true
+      },
+      "version": "6.1.0"
+    }
+  }
+}

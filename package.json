@@ -4,12 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules\\.bin\\cypress run",
+    "testChrome": "npm run test -- --browser chrome"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^9.5.0"
+    "cypress": "^9.5.0",
+    "mochawesome": "^7.1.0",
+    "mochawesome-merge": "^4.2.1"
+  },
+  "dependencies": {
+    "ajv": "^8.10.0",
+    "ajv-formats": "^2.1.1"
   }
+  
 }
