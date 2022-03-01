@@ -70,7 +70,7 @@ describe('Planets Get Api Tests', ()=>
             "diameter": "10200"
         }]
         }).as('planets');
-        //cy.wait('@planets')
+        cy.wait('@planets')
         cy.get('@planets').its('body').should('include',{name: 'Yavin IV'})
     })  
 
